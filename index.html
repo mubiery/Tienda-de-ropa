@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moda $10 o Menos</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main id="authScreen" class="auth-screen">
+    <section class="auth-card">
+      <h1>Moda $10 o Menos</h1>
+      <p class="subtitle">Ropa en oferta, todo por menos de $10</p>
+
+      <div class="tabs">
+        <button id="loginTab" class="active" type="button">Iniciar sesión</button>
+        <button id="registerTab" type="button">Registro</button>
+      </div>
+
+      <form id="loginForm" class="form">
+        <label>Usuario
+          <input id="loginUser" required placeholder="usuario" autocomplete="username" />
+        </label>
+        <label>Contraseña
+          <input id="loginPass" type="password" required placeholder="contraseña" autocomplete="current-password" />
+        </label>
+        <button class="primary" type="submit">Entrar</button>
+        <p class="hint">Admin demo: <b>admin</b> / <b>admin123</b></p>
+      </form>
+
+      <form id="registerForm" class="form hidden">
+        <label>Nombre completo
+          <input id="regName" required placeholder="Tu nombre" />
+        </label>
+        <label>Usuario
+          <input id="regUser" required placeholder="Crea un usuario" autocomplete="username" />
+        </label>
+        <label>Correo
+          <input id="regEmail" type="email" required placeholder="correo@ejemplo.com" />
+        </label>
+        <label>Contraseña
+          <input id="regPass" type="password" required minlength="4" placeholder="mínimo 4 caracteres" autocomplete="new-password" />
+        </label>
+        <button class="primary" type="submit">Registrarme</button>
+      </form>
+
+      <p id="authMessage" class="message"></p>
+    </section>
+  </main>
+
+  <section id="storeScreen" class="hidden">
+    <header class="topbar">
+      <div>
+        <h2>Moda $10 o Menos</h2>
+        <span id="welcomeText"></span>
+      </div>
+      <nav>
+        <button id="shopBtn" type="button">Tienda</button>
+        <button id="adminBtn" class="hidden" type="button">Admin</button>
+        <button id="cartBtn" type="button">Carrito (<span id="cartCount">0</span>)</button>
+        <button id="logoutBtn" type="button">Salir</button>
+      </nav>
+    </header>
+
+    <section id="shopView" class="content">
+      <div class="hero">
+        <h1>Promoción de temporada</h1>
+        <p>Todo menos de $10. Agrega tus favoritos al carrito.</p>
+      </div>
+      <div id="productsGrid" class="products-grid"></div>
+    </section>
+
+    <section id="cartView" class="content hidden">
+      <h2>Tu carrito</h2>
+      <div id="cartItems"></div>
+      <div class="cart-total">
+        <strong>Total: $<span id="cartTotal">0.00</span></strong>
+        <button id="clearCartBtn" type="button">Vaciar carrito</button>
+      </div>
+    </section>
+
+    <section id="adminView" class="content hidden">
+      <h2>Panel de administrador</h2>
+      <p>Solo el usuario admin puede crear usuarios, ordenarlos y cambiar/restablecer contraseñas.</p>
+
+      <form id="adminCreateUserForm" class="admin-form">
+        <h3>Crear usuario nuevo</h3>
+        <div class="admin-grid">
+          <label>Nombre
+            <input id="adminNewName" required placeholder="Nombre completo" />
+          </label>
+          <label>Usuario
+            <input id="adminNewUser" required placeholder="usuario" autocomplete="off" />
+          </label>
+          <label>Correo
+            <input id="adminNewEmail" type="email" required placeholder="correo@ejemplo.com" />
+          </label>
+          <label>Contraseña inicial
+            <input id="adminNewPass" type="password" required minlength="4" placeholder="mínimo 4 caracteres" autocomplete="new-password" />
+          </label>
+        </div>
+        <button class="primary" type="submit">Crear usuario</button>
+        <p id="adminMessage" class="message"></p>
+      </form>
+
+      <div class="admin-actions">
+        <button id="sortNameBtn" type="button">Ordenar por nombre</button>
+        <button id="sortDateBtn" type="button">Ordenar por fecha</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Usuario</th>
+              <th>Correo</th>
+              <th>Fecha de registro</th>
+              <th>Último cambio</th>
+              <th>Contraseña</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="usersTable"></tbody>
+        </table>
+      </div>
+    </section>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
